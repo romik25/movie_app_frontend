@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Add Theatre</h1>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Theatre Name</mat-label>
+    <input matInput type="text">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Total Seats</mat-label>
+    <input matInput type="number">
+  </mat-form-field>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button  cdkFocusInitial>Add</button>
+  <button mat-button (click)="onClose()">Cancel</button>
+  
+</mat-dialog-actions>
+

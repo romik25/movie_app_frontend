@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Add A Movie For Booking</h1>
+<mat-dialog-content>
+
+   <p style="color:red" *ngIf="errorMessage != '' ">{{errorMessage}}</p>
+  <mat-form-field>
+    <mat-label>Movie Name</mat-label>
+    <input matInput [(ngModel)]="movie.movieName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea matInput
+    [(ngModel)]="movie.description" 
+    placeholder="Description">
+ </textarea>
+  </mat-form-field>
+
+  
+  <mat-form-field>
+    <mat-label>Genre</mat-label>
+    <mat-select [(ngModel)]="movie.genre">
+      <mat-option value="Action">Action</mat-option>
+      <mat-option value="Adventure">Adventure</mat-option>
+      <mat-option value="Animation">Animation</mat-option>
+      <mat-option value="Biography">Biography</mat-option>
+      <mat-option value="Comedy">Comedy</mat-option>
+      <mat-option value="Crime">Crime</mat-option>
+      <mat-option value="Documentary">Documentary</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Theatre</mat-label>
+    <mat-select [(ngModel)]="theatreId">
+      <mat-option *ngFor="let theatre of theatres" value={{theatre.id}}><strong>{{theatre.theatreName}}.</strong>Seats: {{theatre.totalSeats}}</mat-option>
+      
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="movie.status">
+      <mat-option value="Available">Available</mat-option>
+      <mat-option value="Unavailable">Unavailable</mat-option>
+      <mat-option value="Filling">Filling</mat-option>
+    </mat-select>
+    </mat-form-field>
+</mat-dialog-content>
+
+
+
+<mat-dialog-actions>
+    <button mat-button  (click)="addMovie()" cdkFocusInitial>Add</button>
+  <button mat-button (click)="onClose()">Cancel</button>
+  
+</mat-dialog-actions>

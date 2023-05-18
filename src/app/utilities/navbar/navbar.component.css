@@ -1,0 +1,7 @@
+.logout:hover {
+    cursor : pointer;
+}
+
+nav {
+    background-color: rgba(92, 6, 6, 0.742);
+}

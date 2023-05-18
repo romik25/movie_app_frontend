@@ -1,18 +1,65 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http"
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { NavbarComponent } from './utilities/navbar/navbar.component';
+import { FooterComponent } from './utilities/footer/footer.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { AdminDashComponent } from './admin/admin-dash/admin-dash.component';
+import { UserDashComponent } from './user/user-dash/user-dash.component';
+import { BookMovieComponent } from './user/book-movie/book-movie.component';
+import { GlobalHttpInterceptorService } from './errorHandling/global-http-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddMovieComponent } from './modals/add-movie/add-movie.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import { AddTheatreComponent } from './modals/add-theatre/add-theatre.component';
+import { EditTheatreComponent } from './modals/edit-theatre/edit-theatre.component';
+import { EditMovieComponent } from './modals/edit-movie/edit-movie.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    RegisterComponent,
+    LoginComponent,
+    AdminDashComponent,
+    UserDashComponent,
+    BookMovieComponent,
+    AddMovieComponent,
+    AddTheatreComponent,
+    EditTheatreComponent,
+    EditMovieComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatButtonToggleModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: GlobalHttpInterceptorService, multi: true  
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

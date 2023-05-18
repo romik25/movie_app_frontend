@@ -1,0 +1,50 @@
+
+<div class="container">
+
+  <button mat-fab color="primary" class="mt-4"  routerLink="/user" aria-label="Example icon button with a home icon">
+    <mat-icon>home</mat-icon>
+  </button>
+
+ 
+     <div class="row">
+        
+         <div class="col-md-6">
+            
+            <div class="card m-5" style="width: 25rem;">
+                <div class="card-body">
+                  <h4 class="card-title">{{movie.movieName}}</h4>
+                  <p class="card-text">{{movie.description}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong style="color : rebeccapurple;">Theatre: </strong> {{movie.theatreName}}</li>
+                  <li class="list-group-item"><strong style="color : green;">Seats Available: </strong> {{movie.seatsAvailable}}</li>
+                  <li class="list-group-item"><strong style="color : blue;">Genre: </strong>{{movie.genre}}</li>
+                  <li class="list-group-item"><strong style="color : red;">Total Fare: </strong>₹{{totalPrice}}</li>
+                 
+                </ul>
+               
+              </div>
+
+         </div>
+
+
+         <div class="col-md-6">
+            <div class="card m-5">
+                <div class="card-body">
+                   <form #bookingForm="ngForm" (ngSubmit)="onSubmit(bookingForm.value)">
+                    <div class="mb-3">
+                        <label for="cbookedSeats" class="form-label">How Many Seats You Want to Book ?</label>
+                        <input type="number"  #booked (change)="calculateTotal(booked.value)" class="form-control" id="cbookedSeats" name="bookedSeats" ngModel required>
+                          <small style="color : red;" *ngIf="error">{{errorMessage}}</small>
+                      </div>
+                      <button [disabled]="bookingForm.invalid || error" type="submit" class="btn btn-success">Submit</button>
+                   </form>
+                </div>
+              </div>
+         </div>
+
+     </div>
+     
+
+    
+</div>

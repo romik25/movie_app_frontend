@@ -1,0 +1,108 @@
+<div class="container">
+
+    <div *ngIf="error" class="alert alert-danger d-flex align-items-center mt-3" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+        <div>
+          {{errorMessage}}
+        </div>
+
+        </div>
+
+        <div class="card myForm">
+            <div class="card-body">
+
+                <h4 class="card-title">REGISTER</h4>
+                <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm.value)">
+                 
+                     <div class="row">
+
+                    <div class="col-md-6">
+    
+                        <div class="mb-3">
+                            <label for="fName1" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="fName1" name="firstName" ngModel required>
+                            
+                          </div>
+          
+          
+                          <div class="mb-3">
+                              <label for="lName1" class="form-label">Last Name</label>
+                              <input type="text" class="form-control" id="lName1" name="lastName" ngModel required>
+                            
+                            </div>
+          
+          
+                          <div class="mb-3">
+                              <label for="email1" class="form-label">Email</label>
+                              <input type="email" class="form-control"  id="email1" name="email" ngModel aria-describedby="emailHelp" required>
+                              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="ccontact" class="form-label">Contact(10 digits)</label>
+                                <input type="number" class="form-control" id="ccontact" name="contact" ngModel required>
+                                
+                              </div>
+          
+    
+                    </div>
+    
+    
+                    <div class="col-md-6">
+    
+                        <div class="mb-3">
+                            <label for="password1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password1" name="password" ngModel required>
+                            
+                          </div>
+        
+                          <div class="mb-3">
+                            <label for="cpassword1" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="cpassword1" name="cpassword" ngModel required>
+                           
+                          </div>
+
+
+                          <div class="mb-3">
+                            <label for="role1" class="form-label">Select Role</label>
+                                   
+                            <select id="role1" name="role" ngModel class="form-select mb-2" aria-label="Default select example">
+                                <option value="1">User</option>
+                                <option  value="2">Admin</option>
+                               
+                            </select>
+                            </div>
+        
+                         
+        
+        
+                          <div class="mb-3">
+                            <label for="security1" class="form-label">Select secrect security question</label>
+                                   
+                            <select class="form-select mb-2" ngModel name="question" aria-label="Default select example">
+                                <option selected>In what city or town was your first job?</option>
+                                <option value="What elementary school/high school did you attend?">What elementary school/high school did you attend?</option>
+                                <option value="What is your favorite movie?">What is your favorite movie?</option>
+                                <option value="What was your favorite sport in high school?">What was your favorite sport in high school?</option>
+                                <option value="What was the first exam you failed?">What was the first exam you failed?</option>
+                              </select>
+        
+                            <input  type="text" placeholder="Type Your Security Answer" class="form-control" id="security1" name="securityAnswer" ngModel required>
+                            
+                            </div>
+                        
+                    </div>
+
+                </div>
+    
+                    <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+          </div>
+
+
+       
+  
+
+
+</div>

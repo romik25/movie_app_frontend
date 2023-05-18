@@ -1,0 +1,41 @@
+<div class="container">
+
+
+  
+
+
+    <div class="card myForm">
+        <div class="card-body">
+
+            <h4 class="card-title">SIGN IN</h4>
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+
+             
+
+                    <div class="mb-3">
+                        <label for="cusername"  class="form-label">Email Id</label>
+                        <input type="email"  name="username"  class="form-control" id="cusername" name="username" ngModel required>
+                        
+                      </div>
+      
+                      <div class="mb-3">
+                        <label for="password1" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="password1" name="password" ngModel required>
+                        
+                      </div>
+
+                      <div>
+                         <p class="fp">Forgot Password ? Click Here</p>
+                      </div>
+            
+                <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+      </div>
+
+
+   
+
+
+
+</div>

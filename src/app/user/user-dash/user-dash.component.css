@@ -1,0 +1,21 @@
+.green {
+    font-weight: bold;
+    color : green;
+}
+
+.yellow {
+    font-weight: bold;
+    color : yellow;
+}
+
+
+.red {
+    font-weight: bold;
+    color : red;
+}
+
+.spinner{
+    margin-left : auto;
+    margin-right: auto;
+    margin-top : 100px;
+}
