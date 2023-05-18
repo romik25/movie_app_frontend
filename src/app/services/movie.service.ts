@@ -70,6 +70,20 @@ export class MovieService  {
       return this.http.delete<any>(`http://localhost:7004/api/v1/s4/theatre/${theatreId}` , {headers : this.headers})
     }
 
+    showBookings(movieId:number){
+       return this.http.get<any[]>(`http://localhost:7003/api/v1/s3/booking/movie/tickets/${movieId}` , {headers : this.headers} )
+    }
+
+    showBookingsByUser(userId:number){
+      return this.http.get<any[]>(`http://localhost:7003/api/v1/s3/booking/movie/tickets/user/${userId}` , {headers : this.headers} )
+    }
+
+    bookMovie(movieId : number , ticketDetails : any):Observable<any>{
+      return this.http.post<any>(`http://localhost:7003/api/v1/s3/booking/bookTickets/${movieId}` , ticketDetails , {headers : this.headers});
+    }
+
+    
+
 
 
   }

@@ -1,6 +1,7 @@
 import { Component , Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MovieService } from 'src/app/services/movie.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-movie',
@@ -11,11 +12,16 @@ export class EditMovieComponent {
 
   
      theatres : any[] = []
-     data : any = {}
+     data : any = {
+      movieName : "",
+      description : "",
+      genre : "",
+      ticketPrice : 0
+  }
+
      errorMessage : string = ""
 
    constructor(public dialogRef: MatDialogRef<EditMovieComponent> ,  @Inject(MAT_DIALOG_DATA) public movie: any , private movieService : MovieService){
-      console.log(movie)
       this.data = movie;
       this.getTheatres();
    }
@@ -32,11 +38,25 @@ export class EditMovieComponent {
 editMovie(){
   this.errorMessage = ""
      
-  if(this.movie.movieName.trim() == "" || this.movie.description.trim() == ""  || this.movie.genre.trim() =="" || this.movie.status.trim() == ""){
+  if(this.movie.movieName.trim() == "" || this.movie.description.trim() == ""  || this.movie.genre.trim() =="" || this.movie.status.trim() == "" || this.movie.ticketPrice == 0){
      this.errorMessage = "All Fields are mandatory"
      return;
   }
-      console.log(this.movie)
+   
+  this.movie.movieName = this.movie.movieName.trim()
+  this.movie.description  = this.movie.description.trim()
+
+
+
+    this.movieService.updateMovie(this.movie).subscribe(res=>{
+      this.dialogRef.close();
+      Swal.fire("Movie Successfully Updated" , "" , 'success').then(()=>{
+          
+      })
+        
+
+    })
+    
 }
 
 }

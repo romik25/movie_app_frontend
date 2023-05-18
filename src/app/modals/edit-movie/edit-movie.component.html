@@ -1,10 +1,10 @@
-<h1 mat-dialog-title>Edit Movie : {{data.movieName}}( id : {{data.id}})</h1>
+<h1 mat-dialog-title>Edit Movie: id : {{data.id}}</h1>
 <mat-dialog-content>
 
    <p style="color:red" *ngIf="errorMessage != '' ">{{errorMessage}}</p>
   <mat-form-field>
     <mat-label>Movie Name</mat-label>
-    <input matInput value={{data.movieName}}>
+    <input matInput  [(ngModel)]="movie.movieName" >
   </mat-form-field>
 
   <mat-form-field>
@@ -31,12 +31,13 @@
 
 
   <mat-form-field>
-    <mat-label>Theatre</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let theatre of theatres" value={{theatre.id}}><strong>{{theatre.theatreName}}.</strong>Seats: {{theatre.totalSeats}}</mat-option>
-      
-    </mat-select>
+    <mat-label>Ticket Price</mat-label>
+    <textarea matInput
+    [(ngModel)]="movie.ticketPrice" 
+    placeholder="Ticket Price">
+ </textarea>
   </mat-form-field>
+
 
   <mat-form-field>
     <mat-label>Status</mat-label>

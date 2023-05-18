@@ -15,6 +15,7 @@
  </textarea>
   </mat-form-field>
 
+
   
   <mat-form-field>
     <mat-label>Genre</mat-label>
@@ -36,7 +37,19 @@
       <mat-option *ngFor="let theatre of theatres" value={{theatre.id}}><strong>{{theatre.theatreName}}.</strong>Seats: {{theatre.totalSeats}}</mat-option>
       
     </mat-select>
+    <small>Theatre once choosen cannot be updated later</small>
+   
   </mat-form-field>
+
+  
+  <mat-form-field>
+    <mat-label>Ticket Price:</mat-label>
+    <textarea matInput
+    [(ngModel)]="movie.ticketPrice" 
+    placeholder="Ticket Price">
+ </textarea>
+  </mat-form-field>
+ 
 
   <mat-form-field>
     <mat-label>Status</mat-label>

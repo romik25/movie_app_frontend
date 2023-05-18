@@ -1,0 +1,65 @@
+
+<h1 mat-dialog-title>
+    Total Bookings for this movie : {{bookings.length}}
+</h1>
+<mat-dialog-content>
+
+    <mat-accordion>
+        <mat-expansion-panel class="mt-3" 
+          *ngFor="let booking of bookings" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+               #{{booking.id}}
+            </mat-panel-title>
+            <mat-panel-description>
+                <p>Date Of Booking : {{booking.bookingDate | date : "medium"}}</p>
+             
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Available Seats After Booking : {{booking.availableSeats}}</p>
+          <br>
+          <p> Total Seats Booked : {{booking.bookedSeats}}</p>
+          <br>
+          <p>Seat Numbers : {{booking.seatNumber}}</p>
+
+          <br>
+          <p>Total Cost For {{booking.bookedSeats}} tickets :  {{booking.price | currency : "INR"}}</p>
+
+          <br>
+          <section class="example-section">
+            show user info :
+            <mat-slide-toggle
+                (change)="toggleUserInfo(booking.userId)"
+                class="example-margin"
+                [color]="color"
+                [checked]="checked">
+              
+            </mat-slide-toggle>
+          </section>
+
+          <mat-card *ngIf="user != null" class="mt-2 mb-2">
+            <mat-card-content>
+                  
+                <p>Name : {{user.firstName}} {{user.lastName}}</p>
+                <br>
+                <p>Email : {{user.email}}</p>
+                <br>
+                <p>Contact Number : {{user.contact}}</p>
+
+            </mat-card-content>
+          </mat-card>
+        </mat-expansion-panel>
+
+        
+       
+      </mat-accordion>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="close()">Ok</button>
+  
+</mat-dialog-actions>
+
+
+  

@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 export class NavbarComponent implements OnInit {
 
      loggedIn : boolean  =false;
-
+     role : string = ""
      constructor(private router:Router){
              
      }
@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
        if(localStorage.getItem("token")){
               this.loggedIn = true;
+            this.role = localStorage.getItem("role")
        }
   }
 
@@ -32,6 +33,7 @@ export class NavbarComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         localStorage.removeItem("token")
+        localStorage.removeItem("id")
         localStorage.removeItem("role")
         this.router.navigateByUrl("/").then(() => {
           location.reload();

@@ -67,6 +67,7 @@ export class GlobalHttpInterceptorService implements HttpInterceptor {
        
                       this.showAlert("Session Expired" , "Please Log In Again" ,  "error").then(()=>{
                         localStorage.removeItem("token")
+                        localStorage.removeItem("id")
                         localStorage.removeItem("role")
                         this.router.navigateByUrl("/").then(()=>{
                         window.location.reload()

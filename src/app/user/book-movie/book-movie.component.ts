@@ -13,7 +13,9 @@ export class BookMovieComponent implements OnInit {
      movie : any = {}
      error : boolean  = false
      errorMessage : string = ""
-     totalPrice : string = "0"
+     booked : boolean  = false;
+     transactionDetails : any = {}
+     loading : boolean  = false;
     constructor(private movieService : MovieService , private ac : ActivatedRoute , private router : Router){
         
     }
@@ -22,6 +24,7 @@ export class BookMovieComponent implements OnInit {
  
      this.id =  parseInt(this.ac.snapshot.paramMap.get("id"))
      this.getMovie(this.id)
+     this.booked = false;
   }
 
   getMovie(id:number){
@@ -32,34 +35,75 @@ export class BookMovieComponent implements OnInit {
 
 
   calculateTotal(booked : any){
-    
-     
-
-     let price : number = 150
+   
+     let price : number = this.movie.ticketPrice;
           
      if(booked > this.movie.seatsAvailable){
+      
+      this.error  =true;
+      this.errorMessage = "Booked Seats cannot be greater than total number of seats available"
+      return -1;
+     }
+
+     this.error  =false;
+     this.errorMessage = ""
+       
+       return price * booked
+      
+  }
+
+
+  allotSeats(numberOfSeats:number){
+    let seats = []
+for(var i=0 ; i<numberOfSeats;i++){
+    
+     let alphabets = "ABCDEFGHIJKLMN";
+
+const rand1 = Math.floor(Math.random() * (12 - 0 + 1)) + 0;
+const rand2 = Math.floor(Math.random() * (24 - 0 + 1)) + 0;
+
+ seats.push(alphabets[rand1]+rand2) 
+ 
+}
+
+return seats.join(",")
+}
+
+
+  onSubmit(bookingForm:any){
+        this.loading = true;
+      setTimeout(()=>{
+         this.loading = false;
+      } , 5000)
+
+    this.error  =false;
+    this.errorMessage = ""
+      
+     let seats = this.allotSeats(bookingForm.bookedSeats)
+
+     if(seats > this.movie.seatsAvailable){
       
       this.error  =true;
       this.errorMessage = "Booked Seats cannot be greater than total number of seats available"
       return;
      }
 
-     this.error  =false;
-     this.errorMessage = ""
-       
-     this.totalPrice  =  price * booked + ""
+     const data = {
+      userId : localStorage.getItem("id"),
+      bookedSeats : bookingForm.bookedSeats,
+      seatNumber : seats,
+      bookingDate : new Date(),
+      price :this.calculateTotal(bookingForm.bookedSeats)
+     }
       
+    this.movieService.bookMovie(this.movie.id , data).subscribe(res=>{
+             this.transactionDetails = res;
+             this.booked = true
+    })
   }
 
 
-  onSubmit(bookingForm:any){
-      
-      setTimeout(()=>{
-
-      } , 3000)
-       
-  }
-
+  
   async showAlert(topic :string , message : string  , icon:SweetAlertIcon){
     //error , info , question ,success , warning
     return Swal.fire(topic, message , icon)

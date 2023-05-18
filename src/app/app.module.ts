@@ -26,6 +26,14 @@ import { AddTheatreComponent } from './modals/add-theatre/add-theatre.component'
 import { EditTheatreComponent } from './modals/edit-theatre/edit-theatre.component';
 import { EditMovieComponent } from './modals/edit-movie/edit-movie.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatBadgeModule} from '@angular/material/badge';
+import { ShowMovieBookingsComponent } from './modals/show-movie-bookings/show-movie-bookings.component';
+import { BookingHistoryComponent } from './user/booking-history/booking-history.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +47,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     AddMovieComponent,
     AddTheatreComponent,
     EditTheatreComponent,
-    EditMovieComponent
+    EditMovieComponent,
+    ShowMovieBookingsComponent,
+    BookingHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +65,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatBadgeModule,
+    MatTableModule,
+    MatExpansionModule,
+    MatSlideToggleModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: GlobalHttpInterceptorService, multi: true  

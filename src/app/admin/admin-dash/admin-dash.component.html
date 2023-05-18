@@ -10,12 +10,13 @@
 
 
             <div *ngFor="let movie of movies" class="col-md-6 p-5">
-              <mat-card class="example-card" >
+              <mat-card  matBadge={{movie.status[0]}} matBadgeColor="accent" matBadgeSize="medium" class="example-card" >
                  <mat-card-header>
-                   <div mat-card-avatar class="example-header-image"></div>
-                   <mat-card-title>{{movie.movieName}}</mat-card-title>
-                   <mat-card-subtitle><strong style="color : blue;">Theatre: </strong>{{movie.theatreName}}</mat-card-subtitle>
+                
+                   <mat-card-title >{{movie.movieName}}</mat-card-title>
+                   <mat-card-subtitle><strong class="mt-2" style="color : blue;">Theatre: </strong>{{movie.theatreName}}</mat-card-subtitle>
                    <mat-card-subtitle><strong style="color : green;">Genre: </strong>{{movie.genre}}</mat-card-subtitle>
+                   <mat-card-subtitle><strong class="mb-2" style="color : rgb(115, 94, 0);">Ticket Price: </strong>{{movie.ticketPrice | currency : "INR"}}</mat-card-subtitle>
                  </mat-card-header>
               
                  <mat-card-content>
@@ -26,7 +27,7 @@
                  <mat-card-actions>
 
                   <div class="example-button-container">
-                     <button  mat-mini-fab color="primary" (click)="editMovie(movie)" title="edit movie" aria-label="Example icon button with a delete icon">
+                     <button  mat-mini-fab color="primary"  title="edit movie" (click)="editMovie(movie)" aria-label="Example icon button with a delete icon">
                        <mat-icon>edit</mat-icon>
                      </button>
                    </div>
@@ -38,7 +39,7 @@
                      </div>
 
                      <div class="example-button-container" style="margin-left : 20px;padding-top: 10px; padding-bottom: 10px;">
-                      <button mat-mini-fab color="primary" title="show bookings"  aria-label="Example icon button with a menu icon">
+                      <button mat-mini-fab color="primary" title="show bookings" (click)="openShowBookingsDialog(movie.id)"  aria-label="Example icon button with a menu icon">
                         <mat-icon>menu</mat-icon>
                       </button>
                     </div>

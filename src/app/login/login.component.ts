@@ -34,8 +34,9 @@ export class LoginComponent implements OnInit {
       
           
      this.authService.login(login).subscribe(res=>{
-          const {token , type}  = res
+          const {token , id ,  type}  = res
           localStorage.setItem("token" , token)
+          localStorage.setItem("id" ,id)
           localStorage.setItem("role" , type)
         
           if(type == "ROLE_USER"){

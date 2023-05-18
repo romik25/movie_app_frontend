@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {User} from "../User"
 import { Observable } from 'rxjs';
 
@@ -10,6 +10,7 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
 
+  headers : HttpHeaders = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem("token")}`);
   
 
   register(user:User , roleId:Number):Observable<any>{
@@ -22,6 +23,10 @@ export class AuthService {
     
     return this.http.post('http://localhost:7001/api/v1/auth/login' , data)
      
+  }
+
+  getUserFromUserId(userId : number) : Observable<any>{
+    return this.http.get<any>(`http://localhost:7001/api/v1/auth/userById/${userId}` , {headers : this.headers});
   }
 
 
