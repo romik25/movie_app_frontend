@@ -32,6 +32,7 @@ import { BookingHistoryComponent } from './user/booking-history/booking-history.
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ForgetPasswordComponent } from './utilities/forget-password/forget-password.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     EditTheatreComponent,
     EditMovieComponent,
     ShowMovieBookingsComponent,
-    BookingHistoryComponent
+    BookingHistoryComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

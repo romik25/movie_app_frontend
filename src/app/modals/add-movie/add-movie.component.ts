@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class AddMovieComponent {
 
-      error : boolean  = true;
+      
       errorMessage : string =""
   
        theatres : any[] = []
@@ -51,9 +51,7 @@ export class AddMovieComponent {
 
        this.movieService.addMovie(this.movie , this.theatreId).subscribe(res=>{
         this.dialogRef.close();
-           Swal.fire("Movie Added" , "" , 'success').then(()=>{
-  
-           })
+           Swal.fire("Movie Added" , "" , 'success')
        })
      
   }

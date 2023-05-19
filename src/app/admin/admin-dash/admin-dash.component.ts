@@ -7,6 +7,7 @@ import { AddTheatreComponent } from 'src/app/modals/add-theatre/add-theatre.comp
 import Swal from 'sweetalert2';
 import { EditMovieComponent } from 'src/app/modals/edit-movie/edit-movie.component';
 import { ShowMovieBookingsComponent } from 'src/app/modals/show-movie-bookings/show-movie-bookings.component';
+import { EditTheatreComponent } from 'src/app/modals/edit-theatre/edit-theatre.component';
 @Component({
   selector: 'app-admin-dash',
   templateUrl: './admin-dash.component.html',
@@ -60,10 +61,14 @@ export class AdminDashComponent implements OnInit {
   }
 
   openAddTheatreDialog(enterAnimationDuration: string, exitAnimationDuration: string){
-    this.dialog.open(AddTheatreComponent, {
+    const dialogRef = this.dialog.open(AddTheatreComponent, {
       width: '300px',
       autoFocus: false,
     });
+
+    dialogRef.afterClosed().subscribe(()=>{
+      this.getTheatres()
+   })
   }
 
   openShowBookingsDialog(movieId : number){
@@ -80,6 +85,18 @@ export class AdminDashComponent implements OnInit {
          width : '300px',
          autoFocus : false,
          data : movie
+     })
+
+      dialogRef.afterClosed().subscribe(()=>{
+         this.getMovies();
+      })
+  }
+
+  editTheatre(theatre:any){
+    const dialogRef =  this.dialog.open(EditTheatreComponent  , {
+         width : '300px',
+         autoFocus : false,
+         data : theatre
      })
 
       dialogRef.afterClosed().subscribe(()=>{

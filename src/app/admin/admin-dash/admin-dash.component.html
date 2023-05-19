@@ -16,12 +16,13 @@
                    <mat-card-title >{{movie.movieName}}</mat-card-title>
                    <mat-card-subtitle><strong class="mt-2" style="color : blue;">Theatre: </strong>{{movie.theatreName}}</mat-card-subtitle>
                    <mat-card-subtitle><strong style="color : green;">Genre: </strong>{{movie.genre}}</mat-card-subtitle>
+                   <mat-card-subtitle><strong style="color : rgb(13, 113, 111);">Tickets Available: </strong>{{movie.seatsAvailable}}</mat-card-subtitle>
                    <mat-card-subtitle><strong class="mb-2" style="color : rgb(115, 94, 0);">Ticket Price: </strong>{{movie.ticketPrice | currency : "INR"}}</mat-card-subtitle>
                  </mat-card-header>
               
                  <mat-card-content>
                    <p>
-                    {{movie.description}}
+                    <mat-card-subtitle><strong class="mb-2" style="color : rgb(105, 19, 0);">Description: </strong></mat-card-subtitle> {{movie.description}}
                    </p>
                  </mat-card-content>
                  <mat-card-actions>
@@ -64,7 +65,7 @@
                     <mat-card-subtitle><strong style="color : red;">Seat Capacity: </strong>{{theatre.totalSeats}}</mat-card-subtitle>
                   </mat-card-header>
                   <mat-card-actions>
-                    <mat-icon  style="color : blue; cursor: pointer;">edit</mat-icon>
+                    <mat-icon  (click)="editTheatre(theatre)" style="color : blue; cursor: pointer;">edit</mat-icon>
                     <mat-icon (click)="deleteTheatre(theatre.id)" style="color : red; cursor: pointer; margin-left : 20px;">delete</mat-icon>
                   </mat-card-actions>
                 </mat-card>

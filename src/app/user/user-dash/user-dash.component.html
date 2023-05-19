@@ -37,7 +37,7 @@
                 <td >{{movie.seatsAvailable}}</td>
                 <td   [ngClass]="{'green': movie.status === 'Available', 'yellow' : movie.status == 'Filling' , 'red' : movie.status == 'Unavailable' }"><strong>{{movie.status}}</strong></td>
                 <td>
-                   <button routerLink="/book/{{movie.id}}" class="btn btn-info">Book</button>
+                   <button [disabled]="movie.status == 'Unavailable' " routerLink="/book/{{movie.id}}" class="btn btn-info">Book</button>
                 </td>
             </tr>
  

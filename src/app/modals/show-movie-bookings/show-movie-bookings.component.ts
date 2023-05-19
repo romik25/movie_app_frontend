@@ -31,6 +31,12 @@ export class ShowMovieBookingsComponent {
          this.bookings = res.reverse();
        })
    }
+   
+
+   onCollapse(event:any){
+      this.user = null;
+      this.checked = false;
+   }
 
 
    toggleUserInfo(userId : number){

@@ -8,6 +8,7 @@ import { BookMovieComponent } from './user/book-movie/book-movie.component';
 import { RouteGuardAdminService } from './routeGuard/route-guard-user.service';
 import { RouteGuardUserService } from './routeGuard/route-guard-admin.service';
 import { BookingHistoryComponent } from './user/booking-history/booking-history.component';
+import { ForgetPasswordComponent } from './utilities/forget-password/forget-password.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,9 @@ const routes: Routes = [
   },
   {
     path : "user/bookings" , component : BookingHistoryComponent  ,canActivate : [RouteGuardUserService] 
+  },
+  {
+    path : "forget-password" , component : ForgetPasswordComponent
   }
 ];
 

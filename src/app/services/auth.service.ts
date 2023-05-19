@@ -15,14 +15,22 @@ export class AuthService {
 
   register(user:User , roleId:Number):Observable<any>{
 
-    return this.http.post(`http://localhost:7001/api/v1/auth/${roleId}/register` , user);
+    return this.http.post<any>(`http://localhost:7001/api/v1/auth/${roleId}/register` , user);
           
   }
 
   login(data:any): Observable<any>{
     
-    return this.http.post('http://localhost:7001/api/v1/auth/login' , data)
-     
+    return this.http.post<any>('http://localhost:7001/api/v1/auth/login' , data)
+    
+  }
+
+  changePassword(data : any):Observable<any>{
+    return this.http.post<any>(`http://localhost:7001/api/v1/auth/changePassword` , data);
+  }
+
+  getUserFromEmail(email:string):Observable<any>{
+    return this.http.get<any>(`http://localhost:7001/api/v1/auth/user/${email}`);
   }
 
   getUserFromUserId(userId : number) : Observable<any>{

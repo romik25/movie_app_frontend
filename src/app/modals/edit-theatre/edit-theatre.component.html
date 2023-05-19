@@ -1,1 +1,22 @@
-<p>edit-theatre works!</p>
+<h1 mat-dialog-title>Edit Theatre: id : {{data.id}}</h1>
+<mat-dialog-content>
+
+   <p style="color:red" *ngIf="errorMessage != '' ">{{errorMessage}}</p>
+  <mat-form-field>
+    <mat-label>Theatre Name</mat-label>
+    <input matInput  [(ngModel)]="theatre.theatreName" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Total Seats</mat-label>
+    <input matInput type="number" [(ngModel)]="theatre.totalSeats" >
+  </mat-form-field>
+
+
+
+<mat-dialog-actions>
+    <button mat-button  (click)="editTheatre()" cdkFocusInitial>Submit</button>
+  <button mat-button (click)="onClose()">Cancel</button>
+  
+</mat-dialog-actions>
+

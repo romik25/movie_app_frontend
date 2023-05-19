@@ -50,12 +50,8 @@ editMovie(){
 
     this.movieService.updateMovie(this.movie).subscribe(res=>{
       this.dialogRef.close();
-      Swal.fire("Movie Successfully Updated" , "" , 'success').then(()=>{
-          
-      })
-        
-
-    })
+      Swal.fire("Movie Successfully Updated" , "" , 'success')
+  })
     
 }
 
