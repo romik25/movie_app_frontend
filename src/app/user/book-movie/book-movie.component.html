@@ -5,20 +5,34 @@
     <mat-icon>home</mat-icon>
   </button>
 
-  <div class="center">
+  <div class="center" style="padding-bottom : 50px;">
 
      <h1>Movie Booked Successfully.Download the ticket Now.</h1>
         <img src="../../../assets/booking-confirmed.png" alt="Movie Booked Tick">
         <br>
-        <button mat-fab color="primary" title="download ticket" class="mt-4"  routerLink="/user" aria-label="Example icon button with a home icon">
-          <mat-icon>download</mat-icon>
-        </button>
+        
+         
+            <button mat-fab color="primary" title="download ticket" class="mt-4" (click)="generatePdf(modes[1])" aria-label="Example icon button with a home icon">
+              <mat-icon>download</mat-icon>
+            </button>
+           
+  
+          
+              <button mat-fab color="primary" title="open ticket" style="margin-left:10px;"  class="mt-4" (click)="generatePdf(modes[0])" aria-label="Example icon button with a home icon">
+                <mat-icon>open_in_browser</mat-icon>
+              </button>
+       
+  
+              <button mat-fab color="primary" title="print ticket" style="margin-left:10px;" class="mt-4" (click)="generatePdf(modes[2])" aria-label="Example icon button with a home icon">
+                <mat-icon>print</mat-icon>
+              </button>
+
+              <button mat-fab color="primary" title="Book Again" style="margin-left:10px;" class="mt-4" (click)="reset()" aria-label="Example icon button with a home icon">
+                <mat-icon>format_color_reset</mat-icon>
+              </button>
+       
   </div>
-   
-
 </div>
-
-
 
 <div class="container" *ngIf="!booked">
 

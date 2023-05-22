@@ -35,9 +35,9 @@
                 <td>{{movie.theatreName}}</td>
                 <td>{{movie.theatre.totalSeats}}</td>
                 <td >{{movie.seatsAvailable}}</td>
-                <td   [ngClass]="{'green': movie.status === 'Available', 'yellow' : movie.status == 'Filling' , 'red' : movie.status == 'Unavailable' }"><strong>{{movie.status}}</strong></td>
+                <td   [ngClass]="{'green': movie.status === 'Available', 'yellow' : movie.status == 'Filling' , 'red' : movie.seatsAvailable == 0 }"><strong>{{movie.status}}</strong></td>
                 <td>
-                   <button [disabled]="movie.status == 'Unavailable' " routerLink="/book/{{movie.id}}" class="btn btn-info">Book</button>
+                   <button [disabled]="movie.seatsAvailable == 0 " routerLink="/book/{{movie.id}}" class="btn btn-info">Book</button>
                 </td>
             </tr>
  
