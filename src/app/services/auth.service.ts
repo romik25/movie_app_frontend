@@ -15,13 +15,13 @@ export class AuthService {
 
   register(user:User , roleId:Number):Observable<any>{
 
-    return this.http.post<any>(`http://localhost:7001/api/v1/auth/${roleId}/register` , user);
+    return this.http.post<any>(`http://localhost:7004/api/v1/s4/movie/${roleId}/register` , user);
           
   }
 
   login(data:any): Observable<any>{
     
-    return this.http.post<any>('http://localhost:7001/api/v1/auth/login' , data)
+    return this.http.post<any>('http://localhost:7004/api/v1/s4/movie/login' , data)
     
   }
 

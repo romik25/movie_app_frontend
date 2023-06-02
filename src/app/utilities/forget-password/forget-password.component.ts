@@ -24,6 +24,9 @@ export class ForgetPasswordComponent {
    }
 
    onForgetPassword(data: any){
+
+    
+     
     this.changePassword = false;
      const question =   this.user.securityAnswer.split("-")[0]
      const answer = this.user.securityAnswer.split("-")[1].trim().toLowerCase();

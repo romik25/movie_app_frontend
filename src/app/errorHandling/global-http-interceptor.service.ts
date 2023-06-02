@@ -11,6 +11,7 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
 export class GlobalHttpInterceptorService implements HttpInterceptor {
 
   constructor(private router : Router , private loader : LoaderService) { }
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
           this.loader.show();
@@ -75,7 +76,8 @@ export class GlobalHttpInterceptorService implements HttpInterceptor {
                       })
                          
                       break;
-                     
+                     default :
+                      this.showAlert("Server is Down" , "" , "error")
                  }
                    }
                   }
