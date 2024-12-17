@@ -4,6 +4,12 @@
         "route": "/api/*",
         "rewrite": "https://apimanagementmovieapp.azure-api.net/*"
       }
-    ]
+    ],
+    "navigationFallback": {
+      "rewrite": "/index.html"
+    },
+    "mimeTypes": {
+      ".json": "text/json"
+    }
   }
   
