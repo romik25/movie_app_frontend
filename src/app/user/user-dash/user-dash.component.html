@@ -31,10 +31,10 @@
          </thead>
  
             <tr *ngFor="let movie of movies">
-                <td>{{movie.movieName}}</td>
-                <td>{{movie.theatreName}}</td>
-                <td>{{movie.theatre.totalSeats}}</td>
-                <td >{{movie.seatsAvailable}}</td>
+                <td>{{movie?.movieName}}</td>
+                <td>{{movie?.theatreName}}</td>
+                <td>{{movie?.theatre.totalSeats}}</td>
+                <td >{{movie?.seatsAvailable}}</td>
                 <td   [ngClass]="{'green': movie.status === 'Available', 'yellow' : movie.status == 'Filling' , 'red' : movie.seatsAvailable == 0 }"><strong>{{movie.status}}</strong></td>
                 <td>
                    <button [disabled]="movie.seatsAvailable == 0 " routerLink="/book/{{movie.id}}" class="btn btn-info">Book</button>

@@ -27,18 +27,19 @@ export class AddTheatreComponent {
   }
 
 
-  addTheatre(){
-        
-      const {theatreName , totalSeats} = this.theatre
-      if(theatreName.trim() == "" || totalSeats <50 || totalSeats > 200){
-        this.errorMessage = "All Fields are mandatory and total seats greater than 50 and less than 300"
+  addTheatre() {
+    const { theatreName, totalSeats } = this.theatre;
+    if (theatreName.trim() === "" || totalSeats < 50 || totalSeats > 200) {
+        this.errorMessage = "All Fields are mandatory and total seats greater than 50 and less than 300";
         return;
-      }
+    }
 
-      this.movieService.addTheatre(this.theatre).subscribe(()=>{
+    this.movieService.addTheatre(this.theatre).subscribe(() => {
         this.dialogRef.close();
-        Swal.fire("Theatre Added" , "" , 'success')
-      })
-  }
+        Swal.fire("Theatre Added", "", 'success');
+    }, (error) => {
+        this.errorMessage = "Error adding theatre"; // Handle error case if needed
+    });
+}
 
 }

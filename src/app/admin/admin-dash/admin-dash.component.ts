@@ -83,6 +83,7 @@ export class AdminDashComponent implements OnInit {
   editMovie(movie:any){
     const dialogRef =  this.dialog.open(EditMovieComponent  , {
          width : '300px',
+         height: '500px',
          autoFocus : false,
          data : movie
      })

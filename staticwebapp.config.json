@@ -1,0 +1,9 @@
+{
+    "routes": [
+      {
+        "route": "/api/*",
+        "rewrite": "https://apimanagementmovieapp.azure-api.net/*"
+      }
+    ]
+  }
+  
